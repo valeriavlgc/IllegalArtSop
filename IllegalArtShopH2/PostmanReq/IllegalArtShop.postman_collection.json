@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "61575f8d-be0a-452b-a3cf-2c378cd637ab",
+		"name": "IllegalArtShop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear galería {nombre}{stock}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shops/create/Galeria/122",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"create",
+						"Galeria",
+						"122"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar tiendas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shops/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Añadir cuadro{}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shops/añadirCuadro/3/LaMaja/Goya/300000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"añadirCuadro",
+						"3",
+						"LaMaja",
+						"Goya",
+						"300000"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar cuadros {shop_id}",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shops/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar cuadros {shop_id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/shops/listArt/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"shops",
+						"listArt",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
