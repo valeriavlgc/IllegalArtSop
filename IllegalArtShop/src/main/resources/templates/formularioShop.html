@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>HOLA PRUEBA</title>
+</head>
+<body>
+    <h3>CREACIÓN DE TIENDA</h3>
+	<form th:action="@{/shops}" method="post">
+		Name: <input type="text" name="name">
+		Stock: <input type="text" name="stock">
+		<input type="submit" value="Enviar">
+	</form>
+</body>
+</html>

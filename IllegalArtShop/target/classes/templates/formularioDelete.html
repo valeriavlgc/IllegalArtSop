@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="ISO-8859-1">
+	<title>Quemar tienda!!!!</title>
+</head>
+
+<body>
+	<h3>Introduce la tienda para eliminar su contenido</h3>
+	<form th:action="@{/shops/}" method="post">
+		<label for="shop">Shop's name:</label>
+		<select id="shop" name="shops">
+			<option <th:block th:each="Shop: ${shops}" th:value="${Shop.id}" >
+				<tr>
+					<td>[[${Shop.name}]]</td>
+				</tr>
+				</th:block>
+			</option>
+		</select>
+		<input type="submit" value="Enviar">
+	</form>
+</body>
+</body>
+
+</html>

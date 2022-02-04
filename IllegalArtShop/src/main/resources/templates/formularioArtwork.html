@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>Añadir cuadro</title>
+</head>
+
+<body>
+    <h3>AÑADIR OBRA DE ARTE</h3>
+	<form th:action="@{/artwork}" method="post">
+		Name: <input type="text" name="name">
+		Author's name: <input type="text" name="author">
+		Prize: <input type="number" name="prize">
+		<label for="shop">Shop's name:</label>
+        <select id="shop" name="shops">
+        <option <th:block th:each="Shop: ${shops}">
+		 <tr>
+		 <td>[[${Shop.name}]]</td>
+		 </tr>
+          </th:block> </option>
+         </select>
+
+	<input type="submit" value="Enviar">
+	</form>
+</body>
+
+</html>
+
+
+
+
