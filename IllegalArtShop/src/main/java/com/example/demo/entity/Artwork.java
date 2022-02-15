@@ -21,15 +21,15 @@ private double prize;
 @Column(name = "date", columnDefinition="DATETIME")
 @Temporal(TemporalType.TIMESTAMP)
 private Date entryDate;
-//@ManyToOne(targetEntity = Shop.class, fetch = FetchType.LAZY)
+//@ManyToOne(targetEntity = Shop.class)
 @ManyToOne()
-@JoinColumn(name="shop_id")
+@JoinColumn(name="shopId")
 //@NotNull(message = "\"shop\" with a {\"id\"} element is required")
 private Shop shop;
 
+
 public Artwork(){}
 
-//necesario?
 public Artwork(String name, String author, double prize, Date entryDate, Shop shop) {
 	this.name      = name;
 	this.author    = author;

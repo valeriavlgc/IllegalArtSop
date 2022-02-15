@@ -9,14 +9,22 @@ import com.example.demo.repository.DatabaseArt;
 
 @Service
 public class IDatabaseArtImpl implements IDatabaseArt {
+
 @Autowired
 DatabaseArt db;
 
+/*public List<Artwork> getArtByShop(int shopId) {
+	return db.findArtworkByShopId(shopId);
+}*/
+
+
 @Override
-public List<Artwork> getArtByShop(int shopId) {
-List<Artwork> art = db.findAll();
-List<Artwork> filteredArt = art.stream().filter(a -> a.getShopId()== shopId).collect(Collectors.toList());
-	return filteredArt;
+public List<Artwork> getArtByShopId(int shopId) {
+	List<Artwork> art = db.findAll();
+	List<Artwork> filteredArt = art.stream()
+	                                .filter(a -> a.getShopId()== shopId)
+	                                .collect(Collectors.toList());
+		return filteredArt;
 }
 
 @Override
@@ -29,4 +37,6 @@ for (Artwork a : db.findAll()) {
 }
 
 }
+
+
 }

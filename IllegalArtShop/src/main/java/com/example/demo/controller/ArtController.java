@@ -20,9 +20,9 @@ import com.example.demo.service.IDatabase;
 public class ArtController {
 @Autowired	
 DatabaseArt db1;
-
 @Autowired
 IDatabase db2;
+
 Model model;
 List<Shop> shops;
 

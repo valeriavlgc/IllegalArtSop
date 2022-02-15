@@ -25,6 +25,8 @@ public class ShopController {
 
 @Autowired	
 IDatabase db;
+
+
 Model model;
 List<Shop> shops;
 

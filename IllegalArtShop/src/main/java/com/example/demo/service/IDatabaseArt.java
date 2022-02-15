@@ -4,8 +4,9 @@ import java.util.List;
 import com.example.demo.entity.Artwork;
 
 public interface IDatabaseArt {
-    //Lo utilizaré?
-	public List<Artwork> getArtByShop(int shopId); 
+
+	public List<Artwork> getArtByShopId(int shopId); 
 	public void deleteArtByShop (int shopId);
+	
 	
 }
