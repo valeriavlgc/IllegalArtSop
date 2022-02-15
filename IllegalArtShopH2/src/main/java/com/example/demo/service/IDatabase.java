@@ -7,7 +7,7 @@ import com.example.demo.entity.Shop;
 
 public interface IDatabase {
 	
-	Shop findShopById(int shop_id);
+	Optional<Shop> findShopById(int shop_id);
 	List<Shop> listShops(); 
     Shop saveShop(Shop shop); 
     void deleteArt(int shop_id);

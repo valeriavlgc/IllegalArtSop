@@ -1,8 +1,5 @@
 package com.example.demo.controllers;
 
-import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -12,6 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
+
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -22,23 +21,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import com.example.demo.controller.ShopController;
-import com.example.demo.controller.exceptions.ShopNotFoundException;
 import com.example.demo.entity.Artwork;
 import com.example.demo.entity.Shop;
 import com.example.demo.service.IDatabaseArt;
 import com.example.demo.service.IDatabaseImpl;
+
 
 //Añadir algún test de fallos y ResquestBody para practicar ObjMapper.
 
@@ -111,7 +104,7 @@ Date date = new Date();
 shop = new Shop(1,"name1", 234, art);
 artwork = new Artwork(name, author, price, date, shop);	
 
-	 when(db.findShopById(shop_id)).thenReturn(shop);
+	 when(db.findShopById(shop_id)).thenReturn(Optional.of(shop));
      when(db1.save(artwork)).thenReturn(artwork);
 	 
 	 this.mockMvc.perform(post("/shops/añadirCuadro/{shop_id}/{name}/{author}/{prize}", shop_id, name, author, price))
@@ -127,7 +120,6 @@ int shop_id = 1;
 	this.mockMvc.perform(delete("/shops/delete/{shop_id}", shop_id))
 				.andExpect(status().isOk())
 				.andDo(print());
-
 
 }
 

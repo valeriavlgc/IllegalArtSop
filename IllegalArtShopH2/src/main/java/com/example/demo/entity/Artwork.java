@@ -58,13 +58,13 @@ public String getAuthor() {
 	return author;
 }
 
-/*public double getPrize() {
+public double getPrize() {
 	return prize;
 }
 
 public Date getEntryDate() {
 	return entryDate;
-}*/
+}
 
 public void setId(int id) {
 	this.id = id;

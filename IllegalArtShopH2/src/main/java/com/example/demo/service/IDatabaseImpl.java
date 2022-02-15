@@ -46,8 +46,8 @@ public List<Artwork> showArt(int shop_id) {
 }
 
 @Override
-public Shop findShopById(int shop_id) {
-	return db.findById(shop_id).get();
+public Optional<Shop> findShopById(int shop_id) {
+	return db.findById(shop_id);
 }
 	
 }

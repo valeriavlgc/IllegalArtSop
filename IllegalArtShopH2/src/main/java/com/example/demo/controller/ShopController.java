@@ -69,7 +69,7 @@ public ResponseEntity<?> listShops() {
 //POST. Añadir cuadro a una tienda.
 @PostMapping("/añadirCuadro/{shop_id}/{name}/{author}/{prize}")
 public ResponseEntity<Artwork> createArtwork(@PathVariable(name = "name") String name, @PathVariable(name = "author") String author, @PathVariable(name = "prize") double prize, @PathVariable(name = "shop_id") int shop_id) {
-Shop shop = db.findShopById(shop_id);
+Shop shop = db.findShopById(shop_id).get();
 Date date = new Date();
 
 Artwork art = new Artwork(name, author, prize, date, shop);
@@ -81,9 +81,27 @@ db1.save(art);
 //DELETE. Borrar arte de una tienda
 @DeleteMapping("/delete/{shop_id}")
 public ResponseEntity DeleteArt(@PathVariable(name = "shop_id") int shop_id) {
-db.deleteArt(shop_id);
 
-   return ResponseEntity.ok("Galería borrada con éxito." + db.showArt(shop_id));
+	try {
+		if (!db.findShopById(shop_id).isPresent()) {
+			throw new ShopNotFoundException("Error 02: La tienda seleccionada no existe.");
+		} else {
+
+			try {
+			if(db.showArt(shop_id).isEmpty()) {
+				throw new ArtworkNotFoundException("No hay obras en la tienda seleccionada.");
+			}
+			db.deleteArt(shop_id);
+			return ResponseEntity.ok("Galería borrada con éxito." + db.showArt(shop_id));
+			} catch (ArtworkNotFoundException e) {
+				return globalException.handleArtworkNotFoundException(e);
+			}
+		}
+		
+	 } catch(ShopNotFoundException e) {
+	     return globalException.handleShopNotFoundException(e);
+     }
+	  
 }
 
 
